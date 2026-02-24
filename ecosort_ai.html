@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>EcoSort-AI | Conveyor Smart Sorting</title>
+    <title>EcoSort-AI | Smart Conveyor Sorting</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap"
         rel="stylesheet">
@@ -34,11 +34,11 @@
 
         .top {
             text-align: center;
-            padding: 30px;
+            padding: 28px;
             background: linear-gradient(rgba(16, 185, 129, .08), transparent);
             border-radius: 24px;
             border: 1px solid rgba(16, 185, 129, .08);
-            margin-bottom: 24px
+            margin-bottom: 20px
         }
 
         .top h1 {
@@ -64,7 +64,7 @@
 
         .belt {
             width: 100%;
-            height: 520px;
+            height: 540px;
             background: #080810;
             border-radius: 16px;
             overflow: hidden;
@@ -72,7 +72,6 @@
             border: 2px solid var(--border)
         }
 
-        /* Conveyor lanes */
         .lane {
             position: absolute;
             width: 100%;
@@ -80,10 +79,9 @@
             background: #1e293b
         }
 
-        /* Sensor line */
         .scanner {
             position: absolute;
-            top: 250px;
+            top: 200px;
             width: 100%;
             height: 4px;
             background: var(--green);
@@ -93,9 +91,9 @@
 
         .scanner-lbl {
             position: absolute;
-            top: 228px;
+            top: 178px;
             right: 12px;
-            font-size: .65rem;
+            font-size: .63rem;
             color: var(--green);
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -103,64 +101,73 @@
             font-weight: 600
         }
 
-        /* Sorting zones */
-        .zones {
+        /* 3 tolvas at the bottom */
+        .tolvas {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             display: flex;
-            z-index: 8
+            z-index: 8;
+            height: 80px
         }
 
-        .zone {
+        .tolva {
             flex: 1;
-            border-top: 2px dashed;
-            padding: 14px 8px;
-            text-align: center;
-            font-size: .7rem;
+            border-top: 3px dashed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: .72rem;
             font-weight: 600;
-            opacity: .7
+            background: rgba(0, 0, 0, .5)
+        }
+
+        .tolva-count {
+            font-family: 'JetBrains Mono';
+            font-size: 1.4rem;
+            margin-top: 4px
         }
 
         /* Objects */
         .obj {
             position: absolute;
-            width: 65px;
-            height: 65px;
-            border-radius: 14px;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             z-index: 5;
             border: 3px solid var(--gray);
-            background: rgba(100, 116, 139, .15);
-            transition: border .3s, box-shadow .4s, background .3s
+            background: rgba(100, 116, 139, .12);
+            transition: left 0.7s ease, border .3s, box-shadow .4s, background .3s
+        }
+
+        .obj.unknown .icon {
+            visibility: hidden
         }
 
         .obj.unknown::after {
             content: '?';
             position: absolute;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--gray);
             font-weight: bold
         }
 
-        .obj.unknown .icon {
-            display: none
-        }
-
         .obj .lbl {
             position: absolute;
-            bottom: -24px;
+            top: -22px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: .6rem;
+            font-size: .58rem;
             font-weight: 700;
             white-space: nowrap;
-            padding: 2px 10px;
-            border-radius: 6px;
+            padding: 2px 8px;
+            border-radius: 5px;
             display: none;
             color: #000
         }
@@ -168,7 +175,7 @@
         .stats {
             background: var(--card);
             border-radius: 24px;
-            padding: 28px;
+            padding: 24px;
             border: 1px solid var(--border);
             display: flex;
             flex-direction: column
@@ -176,9 +183,9 @@
 
         .stat {
             background: rgba(0, 0, 0, .3);
-            padding: 16px;
-            border-radius: 14px;
-            margin-bottom: 10px;
+            padding: 14px;
+            border-radius: 12px;
+            margin-bottom: 8px;
             display: flex;
             justify-content: space-between;
             align-items: center
@@ -186,25 +193,25 @@
 
         .sv {
             font-family: 'JetBrains Mono';
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 600
         }
 
         .ctrl {
             display: flex;
             gap: 10px;
-            margin-top: 14px
+            margin-top: 12px
         }
 
         .btn {
-            padding: 13px;
+            padding: 12px;
             border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
             border: none;
             flex: 1;
             transition: .2s;
-            font-size: .88rem
+            font-size: .85rem
         }
 
         .btn-go {
@@ -221,86 +228,95 @@
             background: #000;
             flex: 1;
             border-radius: 12px;
-            padding: 12px;
-            margin-top: 14px;
+            padding: 10px;
+            margin-top: 12px;
             font-family: 'JetBrains Mono';
-            font-size: .75rem;
+            font-size: .72rem;
             overflow-y: auto;
-            max-height: 170px;
+            max-height: 160px;
             color: var(--accent);
             border: 1px solid var(--border);
-            line-height: 1.5
+            line-height: 1.4
         }
 
         footer {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 24px;
             color: #334155;
-            font-size: .78rem
+            font-size: .75rem
         }
     </style>
 </head>
 
 <body>
     <div class="top">
-        <p style="text-transform:uppercase;letter-spacing:5px;color:var(--green);margin-bottom:4px;font-size:.82rem">
+        <p style="text-transform:uppercase;letter-spacing:5px;color:var(--green);margin-bottom:4px;font-size:.8rem">
             Ejercicio 1 — Proyecto Único</p>
         <h1>EcoSort-AI Industrial</h1>
-        <p style="opacity:.6">Clasificación de Residuos en Cinta Transportadora con Sensor de Identificación</p>
+        <p style="opacity:.6">Clasificación y Derivación Automática de Residuos con Sensor IA</p>
     </div>
-
     <div class="grid">
         <div class="belt-panel">
             <div class="belt" id="belt">
-                <!-- Lanes background -->
-                <script>for (let i = 0; i < 20; i++)document.write(`<div class="lane" style="top:${i * 28}px"></div>`);</script>
+                <script>for (let i = 0; i < 22; i++)document.write(`<div class="lane" style="top:${i * 26}px"></div>`);</script>
                 <div class="scanner"></div>
-                <div class="scanner-lbl">▼ SENSOR IA — IDENTIFICACIÓN ▼</div>
-                <div class="zones">
-                    <div class="zone" style="border-color:var(--green);color:var(--green)">♻️ PLÁSTICO</div>
-                    <div class="zone" style="border-color:var(--yellow);color:var(--yellow)">🔩 METAL</div>
-                    <div class="zone" style="border-color:var(--blue);color:var(--blue)">📦 CARTÓN</div>
+                <div class="scanner-lbl">▼ SENSOR IA — PUNTO DE IDENTIFICACIÓN ▼</div>
+                <div class="tolvas">
+                    <div class="tolva" id="tolvaP" style="border-color:var(--green);color:var(--green)">♻️ PLÁSTICO<div
+                            class="tolva-count" id="tcP">0</div>
+                    </div>
+                    <div class="tolva" id="tolvaM" style="border-color:var(--yellow);color:var(--yellow)">🔩 METAL<div
+                            class="tolva-count" id="tcM">0</div>
+                    </div>
+                    <div class="tolva" id="tolvaC" style="border-color:var(--blue);color:var(--blue)">📦 CARTÓN<div
+                            class="tolva-count" id="tcC">0</div>
+                    </div>
                 </div>
             </div>
         </div>
-
         <div class="stats">
             <h2 style="margin-top:0">Panel de Control</h2>
             <div class="stat">
-                <div><span style="font-size:1.1rem">♻️</span> Plásticos</div>
+                <div>♻️ Plásticos</div>
                 <div class="sv" id="cP" style="color:var(--green)">0</div>
             </div>
             <div class="stat">
-                <div><span style="font-size:1.1rem">🔩</span> Metales</div>
+                <div>🔩 Metales</div>
                 <div class="sv" id="cM" style="color:var(--yellow)">0</div>
             </div>
             <div class="stat">
-                <div><span style="font-size:1.1rem">📦</span> Cartón</div>
+                <div>📦 Cartón</div>
                 <div class="sv" id="cC" style="color:var(--blue)">0</div>
             </div>
             <div class="stat">
-                <div><span style="font-size:1.1rem">📊</span> Total</div>
+                <div>📊 Total</div>
                 <div class="sv" id="cT">0</div>
             </div>
             <div class="ctrl">
                 <button class="btn btn-go" id="goBtn" onclick="toggleLine()">ACTIVAR LÍNEA</button>
             </div>
-            <div class="log" id="logBox">[Sistema] Listo. Pulse ACTIVAR para iniciar la cinta.</div>
+            <div class="log" id="logBox">[Sistema] Pulse ACTIVAR para iniciar la clasificación.</div>
         </div>
     </div>
-
     <footer>Documento realizado por <b>Izan Urios</b> de 3R de Automatización y Robótica industrial</footer>
-
     <script>
         let run = false, timer;
         let cnt = { p: 0, m: 0, c: 0, t: 0 };
         const TYPES = [
-            { icon: '🥤', label: 'BOTELLA PET', cat: 'p', color: '#10b981' },
-            { icon: '🥫', label: 'LATA ALUMINIO', cat: 'm', color: '#f59e0b' },
-            { icon: '📦', label: 'CAJA CARTÓN', cat: 'c', color: '#3b82f6' },
-            { icon: '🔩', label: 'TORNILLO FE', cat: 'm', color: '#f59e0b' },
-            { icon: '🧴', label: 'ENVASE HDPE', cat: 'p', color: '#10b981' }
+            { icon: '🥤', label: 'BOTELLA PET', cat: 'p', color: '#10b981', tolvaIdx: 0 },
+            { icon: '🥫', label: 'LATA ALUMINIO', cat: 'm', color: '#f59e0b', tolvaIdx: 1 },
+            { icon: '📦', label: 'CAJA CARTÓN', cat: 'c', color: '#3b82f6', tolvaIdx: 2 },
+            { icon: '🔩', label: 'TORNILLO FE', cat: 'm', color: '#f59e0b', tolvaIdx: 1 },
+            { icon: '🧴', label: 'ENVASE HDPE', cat: 'p', color: '#10b981', tolvaIdx: 0 }
         ];
+
+        // Tolva X positions (center of each third)
+        function getTolvaX(idx) {
+            const belt = document.getElementById('belt');
+            const w = belt.offsetWidth;
+            const third = w / 3;
+            return Math.round(third * idx + third / 2 - 30);
+        }
 
         function toggleLine() {
             run = !run;
@@ -314,26 +330,26 @@
         function spawnLoop() {
             if (!run) return;
             spawnObj();
-            timer = setTimeout(spawnLoop, 2000 + Math.random() * 1000);
+            timer = setTimeout(spawnLoop, 2200 + Math.random() * 800);
         }
 
         function spawnObj() {
             const belt = document.getElementById('belt');
             const type = TYPES[Math.floor(Math.random() * TYPES.length)];
+            const beltW = belt.offsetWidth;
 
-            // Create object — starts UNKNOWN
             const el = document.createElement('div');
             el.className = 'obj unknown';
-            el.style.left = (80 + Math.random() * 200) + 'px';
-            el.style.top = '-80px';
+            // Start at center of belt
+            const startX = Math.round(beltW / 2 - 30);
+            el.style.left = startX + 'px';
+            el.style.top = '-70px';
 
-            // Hidden icon (shown after scan)
             const ico = document.createElement('span');
             ico.className = 'icon';
             ico.innerText = type.icon;
             el.appendChild(ico);
 
-            // Hidden label (shown after scan)
             const lbl = document.createElement('div');
             lbl.className = 'lbl';
             lbl.innerText = type.label;
@@ -342,40 +358,45 @@
 
             belt.appendChild(el);
 
-            let y = -80;
+            let y = -70;
             let identified = false;
+            let targetX = null;
 
             const anim = setInterval(() => {
                 if (!run) { clearInterval(anim); el.remove(); return; }
                 y += 2.5;
                 el.style.top = y + 'px';
 
-                // === IDENTIFICATION HAPPENS ONLY AFTER CROSSING THE LINE (y > 254) ===
-                if (y > 254 && !identified) {
+                // IDENTIFICATION at scanner line y=204 (AFTER crossing)
+                if (y > 204 && !identified) {
                     identified = true;
-
-                    // Remove unknown state — reveal material
                     el.classList.remove('unknown');
                     el.style.border = `3px solid ${type.color}`;
                     el.style.background = `${type.color}22`;
-                    el.style.boxShadow = `0 0 25px ${type.color}, 0 0 50px ${type.color}44`;
+                    el.style.boxShadow = `0 0 25px ${type.color},0 0 50px ${type.color}44`;
                     lbl.style.display = 'block';
 
-                    // Update counters
-                    cnt[type.cat]++;
-                    cnt.t++;
+                    cnt[type.cat]++; cnt.t++;
                     document.getElementById('cP').innerText = cnt.p;
                     document.getElementById('cM').innerText = cnt.m;
                     document.getElementById('cC').innerText = cnt.c;
                     document.getElementById('cT').innerText = cnt.t;
+                    document.getElementById('tcP').innerText = cnt.p;
+                    document.getElementById('tcM').innerText = cnt.m;
+                    document.getElementById('tcC').innerText = cnt.c;
 
-                    addLog(`SCAN OK: [${type.label}] → Tolva ${type.cat === 'p' ? 'PLÁSTICO' : type.cat === 'm' ? 'METAL' : 'CARTÓN'}`);
+                    addLog(`SCAN: [${type.label}] → Derivando a tolva ${type.cat === 'p' ? 'PLÁSTICO' : type.cat === 'm' ? 'METAL' : 'CARTÓN'}`);
 
-                    // Fade after identification
-                    setTimeout(() => { el.style.opacity = '.35'; el.style.boxShadow = 'none'; }, 700);
+                    // Move horizontally toward the correct tolva
+                    targetX = getTolvaX(type.tolvaIdx);
+                    el.style.left = targetX + 'px';
+
+                    setTimeout(() => { el.style.boxShadow = 'none'; }, 600);
                 }
 
-                if (y > 540) { clearInterval(anim); el.remove(); }
+                // Fade out near bottom
+                if (y > 440) el.style.opacity = Math.max(0, 1 - (y - 440) / 60);
+                if (y > 520) { clearInterval(anim); el.remove(); }
             }, 16);
         }
 
