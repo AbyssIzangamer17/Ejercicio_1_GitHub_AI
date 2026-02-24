@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ecosistema IA Industrial - Izan Urios (3R)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --p: #6366f1;
+            --bg: #030308;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 80px 10%;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.4s;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            transform: translateY(-15px);
+            border-color: var(--p);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: var(--p);
+        }
+
+        .card p {
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #444;
+            border-top: 1px solid #111;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <p style="text-transform: uppercase; letter-spacing: 5px; color: var(--p); margin-bottom: 10px;">Proyecto Final
+            de Ecosistema IA</p>
+        <h1>Smart Industrial Agent System</h1>
+        <p style="font-weight: 300; font-size: 1.2rem; opacity: 0.6; margin-top: 20px;">Izan Urios | 3R de
+            Automatización y Robótica Industrial</p>
+    </div>
+
+    <div class="grid">
+        <a href="../Ejercicio_2_1_RAG/research_notebook.html" class="card">
+            <h3>🧠 Research RAG Hub</h3>
+            <p>Arquitectura de recuperación aumentada bajo entorno NotebookLM para investigación de manuales
+                industriales.</p>
+        </a>
+        <a href="../Ejercicio_2_2_OPC_UA/scada_visual.html" class="card">
+            <h3>📡 OPC-UA HMI</h3>
+            <p>Monitorización SCADA en tiempo real con datos virtuales y suscripciones de variables críticas.</p>
+        </a>
+        <a href="../Ejercicio_2_3_SCL_IEC61131/frontend_architect.html" class="card">
+            <h3>🛡️ SCL AI Architect</h3>
+            <p>Generador de código SCL avanzado mediante lenguaje natural y validador integral IEC 61131-3.</p>
+        </a>
+        <a href="../Ejercicio_2_4_Propuesta_Industrial/propuesta_innovacion.html" class="card">
+            <h3>🚀 A-SPECTRA Propuesta</h3>
+            <p>Innovación propia: Mantenimiento predictivo hiperespectral asistido por agentes autónomos.</p>
+        </a>
+    </div>
+
+    <div class="footer">
+        © 2026 Izan Urios - Documento realizado por Izan Urios de 3R de Automatización y Robótica industrial
+    </div>
+</body>
+
+</html>

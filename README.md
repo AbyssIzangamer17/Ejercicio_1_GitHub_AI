@@ -1,24 +1,16 @@
-# 🤖 Ejercicio 1: Gestión de Proyectos con IA y GitHub
-### Módulo de Trazabilidad y Planificación - 3R Automatización
+# 🤖 Ejercicio 1: Smart Industrial Agent Portfolio
+### Presentación Profesional de Ecosistema IA - 3R Automatización
 
-Este repositorio documenta la base estratégica del ecosistema industrial, centrada en la integración de agentes de IA para la gestión de proyectos técnicos y su control de versiones en GitHub.
+Este repositorio es la puerta de entrada al producto de software industrial desarrollado, enfocándose en la trazabilidad y la presentación profesional de soluciones tecnológicas asistidas por IA.
 
-## 🚀 Inicio Rápido
+## 🚀 Acceso al Producto
+Para una experiencia completa y profesional, inicia la landing page interactiva:
+👉 **[Abrir Portfolio de Producto](portfolio_index.html)**
 
-1. **Clonar el repositorio**:
-   ```bash
-   git clone https://github.com/AbyssIzangamer17/Ejercicio_1_GitHub_AI.git
-   cd Ejercicio_1_GitHub_AI
-   ```
-
-## 📊 Visualización de Resultados
-Para ver los resultados de la planificación estratégica:
-- Abre el archivo `Documentacion_Ex1.docx` con LibreOffice o Word.
-- Revisa el **pie de página reglamentario** y el borde superior nítido.
-- Revisa el historial de cambios con `git log` para ver la trazabilidad del proyecto.
-
-## 📋 Resumen del Proyecto
-Se ha desarrollado la planificación de **"SmartLogistics-AI"**, un sistema inteligente para la optimización de rutas en almacenes automatizados (AGVs).
+## 📋 Objetivos del Ejercicio
+1. **GitHub Auth**: Sincronización completa con el perfil profesional de Izan Urios.
+2. **Documentación Académica**: Informe detallado sobre el proceso de creación y autoria.
+3. **Presentación de Producto**: Formato Landing Page para visualización de alta gerencia.
 
 ## 👤 Autor
 **Izan Urios** - 3R de Automatización y Robótica Industrial.
