@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Planificación SmartLogistics-AI - Kanban Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --p: #38bdf8;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: white;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            border-bottom: 2px solid var(--p);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .kanban {
+            display: flex;
+            gap: 20px;
+        }
+
+        .column {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            flex: 1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .column h2 {
+            font-size: 1rem;
+            color: var(--p);
+            text-transform: uppercase;
+            margin-top: 0;
+        }
+
+        .task {
+            background: var(--card);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--p);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .task:hover {
+            transform: scale(1.02);
+        }
+
+        .task small {
+            color: #94a3b8;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .badge {
+            background: rgba(56, 189, 248, 0.2);
+            color: var(--p);
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🚀 SmartLogistics-AI <span style="font-weight: 300;">| Dashboard de Gestión</span></h1>
+    <div class="kanban">
+        <div class="column">
+            <h2>Por Hacer</h2>
+            <div class="task">Pruebas de carga AGV<small>Prioridad: Alta</small></div>
+            <div class="task">Optimización de batería<small>Prioridad: Media</small></div>
+        </div>
+        <div class="column">
+            <h2>En Progreso</h2>
+            <div class="task">Integración de Git/GitHub <span class="badge">TAREA 1</span><small>Sincronizando
+                    repositorios...</small></div>
+        </div>
+        <div class="column">
+            <h2>Completado</h2>
+            <div class="task">Análisis de Requisitos<small>Finalizado v1.0</small></div>
+            <div class="task">Diseño de Trazabilidad<small>Aprobado por Izan Urios</small></div>
+        </div>
+    </div>
+</body>
+
+</html>
