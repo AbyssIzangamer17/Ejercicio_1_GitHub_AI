@@ -1,16 +1,15 @@
-# 🤖 Ejercicio 1: Smart Industrial Agent Portfolio
-### Presentación Profesional de Ecosistema IA - 3R Automatización
+# ♻️ Ejercicio 1: EcoSort-AI
+### Sistema Inteligente de Clasificación de Residuos Industriales
 
-Este repositorio es la puerta de entrada al producto de software industrial desarrollado, enfocándose en la trazabilidad y la presentación profesional de soluciones tecnológicas asistidas por IA.
+Este es un proyecto **independiente y de alta utilidad** que utiliza Visión Artificial simplificada para revolucionar el reciclaje en plantas industriales de Automatización y Robótica.
 
-## 🚀 Acceso al Producto
-Para una experiencia completa y profesional, inicia la landing page interactiva:
-👉 **[Abrir Portfolio de Producto](portfolio_index.html)**
+## 🚀 Utilidad Real
+EcoSort-AI permite la separación automatizada de materiales (Plástico, Metal, Cartón) en cintas transportadoras, integrando una interfaz de supervisión de alta visibilidad para los operarios.
 
-## 📋 Objetivos del Ejercicio
-1. **GitHub Auth**: Sincronización completa con el perfil profesional de Izan Urios.
-2. **Documentación Académica**: Informe detallado sobre el proceso de creación y autoria.
-3. **Presentación de Producto**: Formato Landing Page para visualización de alta gerencia.
+## 📋 Características
+- **Detección por IA**: Simulación de reconocimiento de objetos en tiempo real.
+- **Trazabilidad de Residuos**: Registro continuo de cada objeto procesado.
+- **Dashboard de Planta**: Estadísticas e historial de clasificación inmediato.
 
 ## 👤 Autor
 **Izan Urios** - 3R de Automatización y Robótica Industrial.
