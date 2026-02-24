@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>EcoSort-AI | Smart Conveyor Sorting</title>
+    <title>EcoSort-AI | Conveyor Smart Sorting</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap"
         rel="stylesheet">
@@ -16,7 +16,8 @@
             --border: #1e293b;
             --red: #ef4444;
             --blue: #3b82f6;
-            --yellow: #f59e0b
+            --yellow: #f59e0b;
+            --gray: #64748b
         }
 
         * {
@@ -36,19 +37,14 @@
             padding: 30px;
             background: linear-gradient(rgba(16, 185, 129, .08), transparent);
             border-radius: 24px;
-            margin-bottom: 24px;
-            border: 1px solid rgba(16, 185, 129, .08)
+            border: 1px solid rgba(16, 185, 129, .08);
+            margin-bottom: 24px
         }
 
         .top h1 {
             font-size: 2.2rem;
             margin: 0;
             color: var(--accent)
-        }
-
-        .top p {
-            opacity: .6;
-            margin: 8px
         }
 
         .grid {
@@ -59,119 +55,116 @@
             margin: 0 auto
         }
 
-        /* Conveyor Belt */
         .belt-panel {
             background: var(--card);
             border-radius: 24px;
-            padding: 24px;
-            border: 1px solid var(--border);
-            position: relative
+            padding: 20px;
+            border: 1px solid var(--border)
         }
 
         .belt {
             width: 100%;
-            height: 500px;
-            background: #000;
+            height: 520px;
+            background: #080810;
             border-radius: 16px;
             overflow: hidden;
             position: relative;
             border: 2px solid var(--border)
         }
 
-        .belt-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 20px 0
-        }
-
+        /* Conveyor lanes */
         .lane {
-            height: 2px;
-            background: repeating-linear-gradient(90deg, #1e293b 0, #1e293b 20px, transparent 20px, transparent 40px);
+            position: absolute;
             width: 100%;
-            animation: moveLane 1s linear infinite
+            height: 1px;
+            background: #1e293b
         }
 
-        @keyframes moveLane {
-            to {
-                background-position: -40px 0
-            }
-        }
-
+        /* Sensor line */
         .scanner {
             position: absolute;
-            top: 220px;
+            top: 250px;
             width: 100%;
             height: 4px;
             background: var(--green);
-            box-shadow: 0 0 30px var(--green), 0 0 60px rgba(16, 185, 129, .3);
+            box-shadow: 0 0 20px var(--green), 0 0 50px rgba(16, 185, 129, .25);
             z-index: 10
         }
 
-        .scanner-label {
+        .scanner-lbl {
             position: absolute;
-            top: 196px;
-            right: 16px;
-            font-size: .7rem;
+            top: 228px;
+            right: 12px;
+            font-size: .65rem;
             color: var(--green);
             text-transform: uppercase;
             letter-spacing: 2px;
-            z-index: 11
+            z-index: 11;
+            font-weight: 600
         }
 
-        .object {
+        /* Sorting zones */
+        .zones {
             position: absolute;
-            width: 70px;
-            height: 70px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            z-index: 8
+        }
+
+        .zone {
+            flex: 1;
+            border-top: 2px dashed;
+            padding: 14px 8px;
+            text-align: center;
+            font-size: .7rem;
+            font-weight: 600;
+            opacity: .7
+        }
+
+        /* Objects */
+        .obj {
+            position: absolute;
+            width: 65px;
+            height: 65px;
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             z-index: 5;
-            transition: box-shadow .3s, border-color .3s
+            border: 3px solid var(--gray);
+            background: rgba(100, 116, 139, .15);
+            transition: border .3s, box-shadow .4s, background .3s
         }
 
-        .obj-label {
+        .obj.unknown::after {
+            content: '?';
             position: absolute;
-            bottom: -22px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: .6rem;
-            font-weight: 600;
-            white-space: nowrap;
-            padding: 2px 8px;
-            border-radius: 4px;
+            font-size: 1.5rem;
+            color: var(--gray);
+            font-weight: bold
+        }
+
+        .obj.unknown .icon {
             display: none
         }
 
-        .tolvas {
+        .obj .lbl {
             position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
-            padding: 0 10px;
-            z-index: 8
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: .6rem;
+            font-weight: 700;
+            white-space: nowrap;
+            padding: 2px 10px;
+            border-radius: 6px;
+            display: none;
+            color: #000
         }
 
-        .tolva {
-            width: 100px;
-            padding: 12px 8px;
-            border-radius: 10px;
-            text-align: center;
-            font-size: .7rem;
-            font-weight: 600;
-            border: 2px dashed
-        }
-
-        /* Stats Panel */
         .stats {
             background: var(--card);
             border-radius: 24px;
@@ -181,37 +174,37 @@
             flex-direction: column
         }
 
-        .stat-card {
+        .stat {
             background: rgba(0, 0, 0, .3);
-            padding: 18px;
+            padding: 16px;
             border-radius: 14px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center
         }
 
-        .stat-val {
+        .sv {
             font-family: 'JetBrains Mono';
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 600
         }
 
         .ctrl {
             display: flex;
             gap: 10px;
-            margin-top: 16px
+            margin-top: 14px
         }
 
         .btn {
-            padding: 14px;
+            padding: 13px;
             border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
             border: none;
             flex: 1;
             transition: .2s;
-            font-size: .9rem
+            font-size: .88rem
         }
 
         .btn-go {
@@ -219,7 +212,7 @@
             color: #064e3b
         }
 
-        .btn-go.active {
+        .btn-go.on {
             background: var(--red);
             color: #fff
         }
@@ -228,12 +221,12 @@
             background: #000;
             flex: 1;
             border-radius: 12px;
-            padding: 14px;
-            margin-top: 16px;
+            padding: 12px;
+            margin-top: 14px;
             font-family: 'JetBrains Mono';
-            font-size: .78rem;
+            font-size: .75rem;
             overflow-y: auto;
-            max-height: 180px;
+            max-height: 170px;
             color: var(--accent);
             border: 1px solid var(--border);
             line-height: 1.5
@@ -250,155 +243,145 @@
 
 <body>
     <div class="top">
-        <p style="text-transform:uppercase;letter-spacing:5px;color:var(--green);margin-bottom:4px;font-size:.85rem">
+        <p style="text-transform:uppercase;letter-spacing:5px;color:var(--green);margin-bottom:4px;font-size:.82rem">
             Ejercicio 1 — Proyecto Único</p>
         <h1>EcoSort-AI Industrial</h1>
-        <p>Clasificación Multimodal de Residuos en Cinta Transportadora con Sensor IA</p>
+        <p style="opacity:.6">Clasificación de Residuos en Cinta Transportadora con Sensor de Identificación</p>
     </div>
 
     <div class="grid">
         <div class="belt-panel">
             <div class="belt" id="belt">
-                <div class="belt-bg">
-                    <div class="lane"></div>
-                    <div class="lane"></div>
-                    <div class="lane"></div>
-                    <div class="lane"></div>
-                    <div class="lane"></div>
-                    <div class="lane"></div>
-                    <div class="lane"></div>
-                    <div class="lane"></div>
-                    <div class="lane"></div>
-                </div>
+                <!-- Lanes background -->
+                <script>for (let i = 0; i < 20; i++)document.write(`<div class="lane" style="top:${i * 28}px"></div>`);</script>
                 <div class="scanner"></div>
-                <div class="scanner-label">▼ SENSOR IA - LÍNEA DE DETECCIÓN ▼</div>
-                <div class="tolvas">
-                    <div class="tolva" style="border-color:var(--green);color:var(--green)">♻️ PLÁSTICO</div>
-                    <div class="tolva" style="border-color:var(--yellow);color:var(--yellow)">🔩 METAL</div>
-                    <div class="tolva" style="border-color:var(--blue);color:var(--blue)">📦 CARTÓN</div>
+                <div class="scanner-lbl">▼ SENSOR IA — IDENTIFICACIÓN ▼</div>
+                <div class="zones">
+                    <div class="zone" style="border-color:var(--green);color:var(--green)">♻️ PLÁSTICO</div>
+                    <div class="zone" style="border-color:var(--yellow);color:var(--yellow)">🔩 METAL</div>
+                    <div class="zone" style="border-color:var(--blue);color:var(--blue)">📦 CARTÓN</div>
                 </div>
             </div>
         </div>
 
         <div class="stats">
-            <h2 style="margin-top:0">Supervisión de Planta</h2>
-            <div class="stat-card">
-                <div><span style="font-size:1.2rem">♻️</span> Plásticos (PET)</div>
-                <div class="stat-val" id="cntP" style="color:var(--green)">0</div>
+            <h2 style="margin-top:0">Panel de Control</h2>
+            <div class="stat">
+                <div><span style="font-size:1.1rem">♻️</span> Plásticos</div>
+                <div class="sv" id="cP" style="color:var(--green)">0</div>
             </div>
-            <div class="stat-card">
-                <div><span style="font-size:1.2rem">🔩</span> Metales (FE/AL)</div>
-                <div class="stat-val" id="cntM" style="color:var(--yellow)">0</div>
+            <div class="stat">
+                <div><span style="font-size:1.1rem">🔩</span> Metales</div>
+                <div class="sv" id="cM" style="color:var(--yellow)">0</div>
             </div>
-            <div class="stat-card">
-                <div><span style="font-size:1.2rem">📦</span> Cartón / Papel</div>
-                <div class="stat-val" id="cntC" style="color:var(--blue)">0</div>
+            <div class="stat">
+                <div><span style="font-size:1.1rem">📦</span> Cartón</div>
+                <div class="sv" id="cC" style="color:var(--blue)">0</div>
             </div>
-            <div class="stat-card">
-                <div><span style="font-size:1.2rem">📊</span> Total Procesados</div>
-                <div class="stat-val" id="cntT" style="color:#e2e8f0">0</div>
+            <div class="stat">
+                <div><span style="font-size:1.1rem">📊</span> Total</div>
+                <div class="sv" id="cT">0</div>
             </div>
-
             <div class="ctrl">
                 <button class="btn btn-go" id="goBtn" onclick="toggleLine()">ACTIVAR LÍNEA</button>
             </div>
-            <div class="log" id="logBox">[Sistema] Esperando activación de la línea...</div>
+            <div class="log" id="logBox">[Sistema] Listo. Pulse ACTIVAR para iniciar la cinta.</div>
         </div>
     </div>
 
     <footer>Documento realizado por <b>Izan Urios</b> de 3R de Automatización y Robótica industrial</footer>
 
     <script>
-        let running = false, spawnTimer;
-        let counts = { p: 0, m: 0, c: 0, total: 0 };
-        const types = [
-            { icon: '🥤', label: 'BOTELLA PET', cat: 'p', color: 'var(--green)', hex: '#10b981' },
-            { icon: '🥫', label: 'LATA ALUMINIO', cat: 'm', color: 'var(--yellow)', hex: '#f59e0b' },
-            { icon: '📦', label: 'CAJA CARTÓN', cat: 'c', color: 'var(--blue)', hex: '#3b82f6' },
-            { icon: '🔩', label: 'PIEZA MECÁNICA', cat: 'm', color: 'var(--yellow)', hex: '#f59e0b' },
-            { icon: '🧴', label: 'ENVASE HDPE', cat: 'p', color: 'var(--green)', hex: '#10b981' }
+        let run = false, timer;
+        let cnt = { p: 0, m: 0, c: 0, t: 0 };
+        const TYPES = [
+            { icon: '🥤', label: 'BOTELLA PET', cat: 'p', color: '#10b981' },
+            { icon: '🥫', label: 'LATA ALUMINIO', cat: 'm', color: '#f59e0b' },
+            { icon: '📦', label: 'CAJA CARTÓN', cat: 'c', color: '#3b82f6' },
+            { icon: '🔩', label: 'TORNILLO FE', cat: 'm', color: '#f59e0b' },
+            { icon: '🧴', label: 'ENVASE HDPE', cat: 'p', color: '#10b981' }
         ];
 
         function toggleLine() {
-            running = !running;
-            const btn = document.getElementById('goBtn');
-            if (running) {
-                btn.innerText = 'DETENER LÍNEA'; btn.classList.add('active');
-                addLog('Motores activados. Cinta en movimiento.');
-                spawnLoop();
-            } else {
-                btn.innerText = 'ACTIVAR LÍNEA'; btn.classList.remove('active');
-                clearTimeout(spawnTimer);
-                addLog('Línea detenida por operador.');
-            }
+            run = !run;
+            const b = document.getElementById('goBtn');
+            b.innerText = run ? 'DETENER LÍNEA' : 'ACTIVAR LÍNEA';
+            b.classList.toggle('on', run);
+            if (run) { addLog('Motores activados. Cinta en movimiento.'); spawnLoop(); }
+            else { clearTimeout(timer); addLog('Línea detenida.'); }
         }
 
         function spawnLoop() {
-            if (!running) return;
-            spawnObject();
-            spawnTimer = setTimeout(spawnLoop, 2200 + Math.random() * 800);
+            if (!run) return;
+            spawnObj();
+            timer = setTimeout(spawnLoop, 2000 + Math.random() * 1000);
         }
 
-        function spawnObject() {
+        function spawnObj() {
             const belt = document.getElementById('belt');
-            const type = types[Math.floor(Math.random() * types.length)];
+            const type = TYPES[Math.floor(Math.random() * TYPES.length)];
 
-            const obj = document.createElement('div');
-            obj.className = 'object';
-            obj.innerHTML = type.icon;
-            obj.style.border = `3px solid ${type.hex}44`;
-            obj.style.background = 'rgba(0,0,0,0.5)';
-            obj.style.left = (60 + Math.random() * 200) + 'px';
-            obj.style.top = '-80px';
+            // Create object — starts UNKNOWN
+            const el = document.createElement('div');
+            el.className = 'obj unknown';
+            el.style.left = (80 + Math.random() * 200) + 'px';
+            el.style.top = '-80px';
 
-            // Identification label (hidden until scan)
+            // Hidden icon (shown after scan)
+            const ico = document.createElement('span');
+            ico.className = 'icon';
+            ico.innerText = type.icon;
+            el.appendChild(ico);
+
+            // Hidden label (shown after scan)
             const lbl = document.createElement('div');
-            lbl.className = 'obj-label';
+            lbl.className = 'lbl';
             lbl.innerText = type.label;
-            lbl.style.background = type.hex;
-            lbl.style.color = '#000';
-            obj.appendChild(lbl);
+            lbl.style.background = type.color;
+            el.appendChild(lbl);
 
-            belt.appendChild(obj);
+            belt.appendChild(el);
 
-            let pos = -80;
-            let scanned = false;
+            let y = -80;
+            let identified = false;
+
             const anim = setInterval(() => {
-                if (!running) { clearInterval(anim); obj.remove(); return; }
-                pos += 3;
-                obj.style.top = pos + 'px';
+                if (!run) { clearInterval(anim); el.remove(); return; }
+                y += 2.5;
+                el.style.top = y + 'px';
 
-                // SENSOR LINE DETECTION at y=220
-                if (pos >= 210 && pos <= 230 && !scanned) {
-                    scanned = true;
-                    // FLASH: item is identified
-                    obj.style.border = `3px solid ${type.hex}`;
-                    obj.style.boxShadow = `0 0 25px ${type.hex}, 0 0 50px ${type.hex}55`;
+                // === IDENTIFICATION HAPPENS ONLY AFTER CROSSING THE LINE (y > 254) ===
+                if (y > 254 && !identified) {
+                    identified = true;
+
+                    // Remove unknown state — reveal material
+                    el.classList.remove('unknown');
+                    el.style.border = `3px solid ${type.color}`;
+                    el.style.background = `${type.color}22`;
+                    el.style.boxShadow = `0 0 25px ${type.color}, 0 0 50px ${type.color}44`;
                     lbl.style.display = 'block';
 
-                    counts[type.cat]++;
-                    counts.total++;
-                    document.getElementById('cntP').innerText = counts.p;
-                    document.getElementById('cntM').innerText = counts.m;
-                    document.getElementById('cntC').innerText = counts.c;
-                    document.getElementById('cntT').innerText = counts.total;
+                    // Update counters
+                    cnt[type.cat]++;
+                    cnt.t++;
+                    document.getElementById('cP').innerText = cnt.p;
+                    document.getElementById('cM').innerText = cnt.m;
+                    document.getElementById('cC').innerText = cnt.c;
+                    document.getElementById('cT').innerText = cnt.t;
 
-                    addLog(`DETECT: [${type.label}] → Tolva ${type.cat === 'p' ? 'PLÁSTICO' : type.cat === 'm' ? 'METAL' : 'CARTÓN'}`);
+                    addLog(`SCAN OK: [${type.label}] → Tolva ${type.cat === 'p' ? 'PLÁSTICO' : type.cat === 'm' ? 'METAL' : 'CARTÓN'}`);
 
-                    // Fade after detection
-                    setTimeout(() => {
-                        obj.style.opacity = '.4';
-                        obj.style.boxShadow = 'none';
-                    }, 600);
+                    // Fade after identification
+                    setTimeout(() => { el.style.opacity = '.35'; el.style.boxShadow = 'none'; }, 700);
                 }
 
-                if (pos > 520) { clearInterval(anim); obj.remove(); }
+                if (y > 540) { clearInterval(anim); el.remove(); }
             }, 16);
         }
 
-        function addLog(msg) {
+        function addLog(m) {
             const l = document.getElementById('logBox');
-            l.innerHTML = `[${new Date().toLocaleTimeString()}] ${msg}\n` + l.innerHTML;
+            l.innerHTML = `[${new Date().toLocaleTimeString()}] ${m}\n` + l.innerHTML;
         }
     </script>
 </body>
