@@ -14,10 +14,20 @@ El proyecto consiste en la creación de un sistema de simulación industrial de 
 
 **Fuente:** PDF de Instrucciones del Ejercicio (Captura 2026-02-24)
 
-**Prompt original:**
+**Contexto del ejercicio:**
+El Ejercicio 1 forma parte del bloque "Projecte Únic Independent" del módulo de Habilidades del Ecosistema IA. Este ejercicio requiere la creación de un proyecto único e independiente que presente un producto en un formato adecuado para su utilización como ejemplo.
+
+**Prompt original extraído del PDF:**
 > "Exercici 1. Projecte únic independent. Presentació del producte en format adequat per a la seva utilització com a exemple."
 
-Este prompt establece que el Ejercicio 1 debe ser un proyecto único e independiente, presentado de forma adecuada para su utilización como ejemplo.
+**Interpretación y desarrollo:**
+Este prompt establece las bases del Ejercicio 1 como un proyecto autónomo que debe demostrar competencias en la creación de soluciones industriales asistidas por IA. La clave está en "presentar un producto" de forma profesional, no solo código. Esto implica:
+- Crear una interfaz visual atractiva y funcional
+- Demostrar un caso de uso real de automatización industrial
+- Integrar elementos de IA de forma práctica
+- Documentar el proyecto de manera que pueda ser utilizado como referencia
+
+El resultado final fue EcoSort-AI, un sistema completo de clasificación de residuos en cinta transportadora con sensor de identificación y derivación automática a tolvas.
 
 ---
 
