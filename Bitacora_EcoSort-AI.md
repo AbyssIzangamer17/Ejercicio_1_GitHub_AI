@@ -10,6 +10,17 @@ El proyecto consiste en la creación de un sistema de simulación industrial de 
 
 ---
 
+### Prompt de Origen
+
+**Fuente:** PDF de Instrucciones del Ejercicio (Captura 2026-02-24)
+
+**Prompt original:**
+> "Exercici 1. Projecte únic independent. Presentació del producte en format adequat per a la seva utilització com a exemple."
+
+Este prompt establece que el Ejercicio 1 debe ser un proyecto único e independiente, presentado de forma adecuada para su utilización como ejemplo.
+
+---
+
 ### Prompts Utilizados
 
 #### Prompt #1
